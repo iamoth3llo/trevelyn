@@ -1,6 +1,6 @@
 {
 	"name": "trevelyn",
-	"version": "0.0.0-nightly",
+	"version": "0.1.6-nightly",
 	"description": "🎒 Trevelyn is a Telegram bot that will become your traveling companion!",
 	"main": "dist/src/index.js",
 	"type": "module",
