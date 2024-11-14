@@ -1,0 +1,52 @@
+{
+	"name": "trevelyn",
+	"version": "0.0.0-nightly",
+	"description": "🎒 Trevelyn is a Telegram bot that will become your traveling companion!",
+	"main": "dist/src/index.js",
+	"type": "module",
+	"scripts": {
+		"build:clean": "del-cli dist",
+		"build:check": "tsc --noEmit",
+		"build:esm": "swc ./src --out-dir ./dist",
+		"build": "pnpm run build:clean && pnpm run build:check && pnpm run build:esm",
+		"lint": "prettier --check . && eslint . --format=pretty",
+		"format": "prettier --write . && eslint . --fix --format=pretty",
+		"fmt": "pnpm format",
+		"start": "env-cmd node --enable-source-maps dist/src/index.js",
+		"start:prod": "pnpm run build && pnpm run start"
+	},
+	"keywords": [
+		"bot",
+		"automation",
+		"telegram",
+		"tickets",
+		"travel",
+		"telegraf",
+		"booking"
+	],
+	"author": "",
+	"license": "OSL-3.0",
+	"dependencies": {
+		"@sapphire/pieces": "^4.3.1",
+		"@sapphire/utilities": "^3.18.1",
+		"telegraf": "^4.16.3",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@sapphire/ts-config": "^5.0.1",
+		"@swc/cli": "^0.5.0",
+		"@swc/core": "^1.9.2",
+		"@types/node": "^22.9.0",
+		"cross-env": "^7.0.3",
+		"eslint": "^9.14.0",
+		"eslint-config-neon": "^0.2.0",
+		"eslint-formatter-pretty": "^6.0.1",
+		"lodash.merge": "^4.6.2",
+		"prettier": "^3.3.3",
+		"typescript": "^5.6.3"
+	},
+	"engines": {
+		"node": ">=23.2.0"
+	},
+	"packageManager": "pnpm@9.12.3"
+}
