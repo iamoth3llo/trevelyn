@@ -1,4 +1,4 @@
-import { TrevelynClient } from "./apps/trevelyn/lib/structures/TrevelynClient.js";
+import { TrevelynClient } from "./lib/structures/TrevelynClient.js";
 
 void (async () => {
 	try {
