@@ -1,5 +1,8 @@
+import { Markup } from "telegraf";
 import { Command } from "../../lib/structures/Command.js";
 import type { Context } from "../../lib/types/Context.js";
+
+type MainMenuAction = "auto_registration" | "create_subscription" | "search_tickets" | "travel_together";
 
 const WELCOME_MESSAGE = `Привет! 👋 Меня зовут Тревелин! Я помогу вам найти самые дешёвые авиабилеты! Просто укажите:
 
@@ -21,24 +24,28 @@ const WELCOME_MESSAGE = `Привет! 👋 Меня зовут Тревелин
 Не стесняйтесь мной пользоваться, я люблю помогать! ❤️`;
 
 class StartCommand extends Command {
+	private readonly menuButtons: readonly (readonly [string, MainMenuAction])[] = [
+		["👀 Найти самые дешёвые билеты", "search_tickets"],
+		["🔍 Создать подписку", "create_subscription"],
+		["🤖 Автоматическая регистрация", "auto_registration"],
+		["✨ Путешествуем вместе ✨", "travel_together"],
+	] as const;
+
 	public constructor() {
-		super("start", {
+		super({
+			name: "start",
 			description: "Начать работу с ботом.",
 		});
 	}
 
 	public async execute(ctx: Context): Promise<void> {
 		await ctx.reply(WELCOME_MESSAGE);
-		await ctx.reply("📜 Вам доступны следующие функции:", {
-			reply_markup: {
-				inline_keyboard: [
-					[{ text: "👀 Найти самые дешёвые билеты", callback_data: "search_tickets" }],
-					[{ text: "🔍 Создать подписку", callback_data: "create_subscription" }],
-					[{ text: "🤖 Автоматическая регистрация", callback_data: "auto_registration" }],
-					[{ text: "✨ Путешествуем вместе ✨", callback_data: "travel_together" }],
-				],
-			},
-		});
+
+		const keyboard = Markup.inlineKeyboard(
+			this.menuButtons.map(([text, callback_data]) => [Markup.button.callback(text, callback_data)]),
+		);
+
+		await ctx.reply("📜 Вам доступны следующие функции:", keyboard);
 	}
 }
 
