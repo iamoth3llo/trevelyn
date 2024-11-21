@@ -1,6 +1,11 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig.json",
-	"extends": ["@sapphire/ts-config", "@sapphire/ts-config/extra-strict"],
+	"extends": [
+		"@sapphire/ts-config/base",
+		"@sapphire/ts-config/extra-strict",
+		"@sapphire/ts-config/decorators",
+		"@sapphire/ts-config/verbatim"
+	],
 	"compilerOptions": {
 		"declaration": false,
 		"declarationMap": false,
@@ -8,8 +13,6 @@
 		"moduleResolution": "NodeNext",
 		"target": "ESNext",
 		"outDir": "dist",
-		"skipLibCheck": true,
-		"verbatimModuleSyntax": true,
-		"importsNotUsedAsValues": "remove"
+		"skipLibCheck": true
 	}
 }
