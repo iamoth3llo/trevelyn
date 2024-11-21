@@ -13,7 +13,7 @@
 		"format": "prettier --write . && eslint . --fix --format=pretty",
 		"fmt": "pnpm format",
 		"start": "env-cmd node --enable-source-maps dist/src/index.js",
-		"start:prod": "pnpm fmt && pnpm build && pnpm start"
+		"start:dev": "pnpm build && pnpm start"
 	},
 	"keywords": [
 		"bot",
@@ -27,21 +27,20 @@
 	"author": "",
 	"license": "OSL-3.0",
 	"dependencies": {
-		"@sapphire/pieces": "^4.3.1",
-		"@sapphire/utilities": "^3.18.1",
 		"env-cmd": "^10.1.0",
 		"telegraf": "^4.16.3",
+		"undici": "^6.21.0",
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"@sapphire/ts-config": "^5.0.1",
-		"@swc/cli": "^0.5.0",
+		"@swc/cli": "^0.5.1",
 		"@swc/core": "^1.9.2",
-		"@types/node": "^22.9.0",
+		"@types/node": "^22.9.1",
 		"cross-env": "^7.0.3",
 		"del-cli": "^6.0.0",
 		"eslint": "^9.15.0",
-		"eslint-config-neon": "^0.2.0",
+		"eslint-config-neon": "^0.2.3",
 		"eslint-formatter-pretty": "^6.0.1",
 		"lodash.merge": "^4.6.2",
 		"prettier": "^3.3.3",
@@ -50,5 +49,5 @@
 	"engines": {
 		"node": ">=23.2.0"
 	},
-	"packageManager": "pnpm@9.13.1"
+	"packageManager": "pnpm@9.13.2"
 }
